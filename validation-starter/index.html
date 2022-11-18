@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <form>
+      <i class="fas fa-paper-plane"></i>
+
+      <div class="input-group">
+        <label>Full Name</label>   
+        <input type="text" placeholder="Enter your name"  id="contect"  onkeyup="phon()">
+        <span id="name-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Phone No.</label>
+        <input type="tel" placeholder="123 456 7890"  id="no"  onkeyup="nom()">
+        <span id="phone-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Email Id</label>
+        <input type="email" placeholder="Enter Email"  id="e"  onkeyup="mail()">
+        <span id="Email-error"></span>
+      </div>   
+
+      <div class="input-group">
+        <label>Age</label>
+        <input type="number" placeholder=" Age"  id="g"  onkeyup="vay()">
+        <span id="Age-error"></span>
+      </div>  
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" placeholder="Password"  id="pass"  onkeyup="pas()">
+        <span id="Password-error"></span>
+      </div>  
+
+      <div class="input-group">
+        <label>confirm</label>
+        <input type="password" placeholder="Confirm Password"  id="c"  onkeyup="cm()">
+        <span id="Confirm-error"></span>
+      </div>  
+
+    <button type="submit" onclick="return cli()">Submit</button>
+    <span id="sumbit-error"></span>
+       
+   
+  </form>
+
+
+  </div>
+
+  <script >
+   
+let name = document.getElementById("name-error");
+let phonw = document.getElementById("phone-error");
+let Email = document.getElementById("Email-error");
+let age = document.getElementById("Age-error");
+let Password = document.getElementById("Password-error");
+let confirm = document.getElementById("Confirm-error");
+let submi = document.getElementById("sumbit-error");
+
+function phon(){
+  let nam = document.getElementById("contect").value;
+  if(nam.length == 0){
+    name.innerHTML= `name Is required`;
+
+    return false
+    
+  }
+  name.innerHTML= `<i class="fa-solid fa-circle-check"></i>`;
+  true
+
+
+}
+
+function nom(){
+  let number = document.getElementById("no").value;
+  if(number.length != 10  ){
+    phonw.innerHTML= `Phone number must be 10`;
+
+    return false
+    
+  }
+  phonw.innerHTML= `<i class="fa-solid fa-circle-check"></i>`;
+  true
+
+
+}
+function mail(){
+  let E = document.getElementById("e").value;
+  if(E.length == 0  ){
+    Email.innerHTML= `email is required`;
+
+    return false
+    
+  }
+  if (!E.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)  ){
+    Email.innerHTML= `email is invalid`;
+
+    return false
+    
+  }
+  Email.innerHTML= `<i class="fa-solid fa-circle-check"></i>`;
+  true
+
+
+}
+
+
+function vay(){
+  let life = Number(document.getElementById("g").value);
+  if(!( life > 17 && life<36 )  ){
+    age.innerHTML= `age between 18 to 35`;
+
+    return false
+    
+  }
+  age.innerHTML= `<i class="fa-solid fa-circle-check"></i>`;
+  true
+
+
+}
+
+function pas(){
+  let r = document.getElementById("pass").value;
+  if(r.length == 0  ){
+    Password.innerHTML= `password required`;
+
+    return false
+    
+  }
+  Password.innerHTML= `<i class="fa-solid fa-circle-check"></i>`;
+  true
+  
+
+
+}
+
+function cm(){
+  let r = document.getElementById("pass").value;
+  let m = document.getElementById("c").value;
+  if(r != m  ){
+    confirm.innerHTML= `password must be same`;
+
+    return false
+    
+  }
+  confirm.innerHTML= `<i class="fa-solid fa-circle-check"></i>`;
+  true
+}
+
+function cli(){
+  if( phon() !=   pas() ){
+
+    submi.style.display='block'
+    submi.innerHTML= `fix the error`;
+    setTimeout(function(){submi.style.display = 'none';},3000)
+
+    return false
+    
+  }
+
+  if( phon() !=   mail() ){
+
+submi.style.display='block'
+submi.innerHTML= `fix the error`;
+setTimeout(function(){submi.style.display = 'none';},3000)
+
+return false
+
+}
+
+if( phon() !=   vay() ){
+
+submi.style.display='block'
+submi.innerHTML= `fix the error`;
+setTimeout(function(){submi.style.display = 'none';},3000)
+
+return false
+
+}
+
+if( phon() !=   cm() ){
+
+submi.style.display='block'
+submi.innerHTML= `fix the error`;
+setTimeout(function(){submi.style.display = 'none';},3000)
+
+return false
+
+}
+
+
+ 
+ return true
+
+  submi.innerHTML= `Form sumbit`;
+  
+
+}
+
+
+  </script>
+   
+</body>
+</html>

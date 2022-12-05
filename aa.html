@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+     <style>
+        
+     
+        .carousel-container{
+    position: relative;
+    width: 100%;
+    height: 450px;
+    padding: 20px 0;
+    overflow-x: hidden;
+    margin-top: 80px;
+}
+
+.carousel{
+    display: flex;
+    width: 92%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+}
+
+.slider{
+    flex: 0 0 auto;
+    margin-right: 30px;
+    position: relative;
+    background: rgba(0, 0, 0,0.5);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    transition: 1s;
+    overflow: hidden;
+}
+
+.slider img{
+    width: 70%;
+    min-height: 100%;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+}
+
+.slide-content{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(to right, #030b17 80%, #0c111b00);
+    color: #fff;
+}
+
+.movie-title{
+    padding-left: 50px;
+    text-transform: capitalize;
+    margin-top: 80px;
+}
+
+.movie-des{
+    width: 80%;
+    line-height: 30px;
+    padding-left: 50px;
+    margin-top: 30px;
+    opacity: 0.8;
+}
+       
+        </style>
+  
+</head>
+<body>
+   
+  <div class="carousel-container">
+  <div class="carousel">
+      <div class="slider">
+          <div class="slide-content">
+              <h1 class="movie-title">loki</h1>
+              <p class="movie-des">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit saepe eius ratione nostrum mollitia explicabo quae nam pariatur. Sint, odit?</p>
+          </div>
+          <img src="ta2.jpg" alt="" style="height: 200px;">
+      </div>
+  </div>
+</div>
+
+<script>
+ let movies = [
+    {
+        name: 'falcon and the winter soldier',
+        des: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit porro et veniam excepturi, eaque voluptatem impedit nulla laboriosam facilis ut laboriosam libero!',
+        image: 'ta2/slider 2.jpg'
+    },
+    {
+        name: 'loki',
+        des: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit porro et veniam excepturi, eaque voluptatem impedit nulla laboriosam facilis ut laboriosam libero!',
+        image: 'ta1/slider 1.jpg'
+    },
+    {
+        name: 'wanda vision',
+        des: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit porro et veniam excepturi, eaque voluptatem impedit nulla laboriosam facilis ut laboriosam libero!',
+        image: 'images/slider 3.PNG'
+    },
+/// and so on
+]
+/// and so on
+const carousel = document.querySelector('.carousel');
+let sliders = [];
+
+let slideIndex = 0; // to track current slide index.
+const createSlide = () => {
+    if(slideIndex >= movies.length){
+        slideIndex = 0;
+    }
+
+    // creating DOM element
+    let slide = document.createElement('div');
+    let imgElement = document.createElement('img');
+    let content = document.createElement('div');
+    let h1 = document.createElement('h1');
+    let p = document.createElement('p');
+}
+{
+    // attaching all elements
+    imgElement.appendChild(document.createTextNode(''));
+    h1.appendChild(document.createTextNode(movies[slideIndex].name));
+    p.appendChild(document.createTextNode(movies[slideIndex].des));
+    content.appendChild(h1);
+    content.appendChild(p);
+    slide.appendChild(content);
+    slide.appendChild(imgElement);
+    carousel.appendChild(slide);
+}
+{
+    // setting up image
+    imgElement.src = movies[slideIndex].image;
+    slideIndex++;
+
+    // setting elements classname
+    slide.className = 'slider';
+    content.className = 'slide-content';
+    h1.className = 'movie-title';
+    p.className = 'movie-des';
+
+    sliders.push(slide);
+}
+{
+    if(sliders.length){
+        sliders[0].style.marginLeft = `calc(-${100 * (sliders.length - 2)}% - ${30 * (sliders.length - 2)}px)`;
+    }
+}
+
+
+
+</script>
+   
+</body>
+</html>
